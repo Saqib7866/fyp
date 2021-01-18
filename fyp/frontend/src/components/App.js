@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import ReactDOM from "react-dom";
 import Header from "./layout/Header";
-import background from "./img/bg.jpg";
+import background from "./img/bg2.jpg";
 
 class App extends Component {
   constructor(props) {
@@ -74,74 +74,85 @@ class App extends Component {
 
   render() {
     return (
-      <div className="vh-100" style={{ backgroundImage: `url(${background})` }}>
-        <div className="text-center h1 bg-primary text-white">FYP</div>
-        <div className="text-center h2 bg-info text-white">
-          Sentimental Analysis Within Urgency Tweets
-        </div>
-        <Container>
-          <Row className="mt-5">
-            <Col xs="4"></Col>
-            <Col xs="6">
-              <form onSubmit={this.handleSubmit}>
-                {this.state.errors.map((error, i) => (
-                  <div className="alert alert-danger" role="alert" key={i}>
-                    {error}
-                  </div>
-                ))}
-                <div className="form-group">
-                  <label>Text To Check:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={this.state.message}
-                    onChange={(e) => this.setState({ message: e.target.value })}
-                  />
-                </div>
-                <div className="">
-                  <button
-                    className="btn btn-outline-primary m-2"
-                    type="button"
-                    onClick={this.urgencyCheck}
-                  >
-                    Check Urgency
-                  </button>
-                  <button
-                    className="btn btn-outline-primary m-2"
-                    type="button"
-                    onClick={this.sentimentCheck}
-                  >
-                    Check Sentiment
-                  </button>
-                </div>
-              </form>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs="12">
-              <table className="table table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Message</th>
-                    <th scope="col">Prediction</th>
-                    <th scope="col">Type</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.state.results.map((result, i) => (
-                    <tr key={i}>
-                      <th scope="row">{result.position}</th>
-                      <td>{result.message}</td>
-                      <td>{result.prediction}</td>
-                      <td>{result.type}</td>
-                    </tr>
+      <div
+        style={{
+          backgroundImage: `url(${background})`,
+          backgroundSize: "cover",
+          height: "100%",
+          backgroundRepeat: "repeat",
+        }}
+      >
+        <div className="vh-100">
+          <div className="text-center h1 bg-primary text-white">FYP</div>
+          <div className="text-center h2 bg-info text-white">
+            Sentimental Analysis Within Urgency Tweets
+          </div>
+          <Container>
+            <Row className="mt-5">
+              <Col xs="4"></Col>
+              <Col xs="6">
+                <form onSubmit={this.handleSubmit}>
+                  {this.state.errors.map((error, i) => (
+                    <div className="alert alert-danger" role="alert" key={i}>
+                      {error}
+                    </div>
                   ))}
-                </tbody>
-              </table>
-            </Col>
-          </Row>
-        </Container>
+                  <div className="form-group">
+                    <label>Text To Check:</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={this.state.message}
+                      onChange={(e) =>
+                        this.setState({ message: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className="">
+                    <button
+                      className="btn btn-outline-primary m-2"
+                      type="button"
+                      onClick={this.urgencyCheck}
+                    >
+                      Check Urgency
+                    </button>
+                    <button
+                      className="btn btn-outline-primary m-2"
+                      type="button"
+                      onClick={this.sentimentCheck}
+                    >
+                      Check Sentiment
+                    </button>
+                  </div>
+                </form>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs="12">
+                <table className="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Message</th>
+                      <th scope="col">Prediction</th>
+                      <th scope="col">Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.results.map((result, i) => (
+                      <tr key={i}>
+                        <th scope="row">{result.position}</th>
+                        <td>{result.message}</td>
+                        <td>{result.prediction}</td>
+                        <td>{result.type}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </div>
     );
   }
