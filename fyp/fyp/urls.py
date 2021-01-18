@@ -22,5 +22,6 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
     path('', include('fyp_app.urls')),
-    url('api/tutorials', views.custom),
+    url('api/urgency', views.urgency),
+    url('api/sentiment', views.sentiment),
 ]

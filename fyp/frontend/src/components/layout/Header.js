@@ -16,7 +16,10 @@ export class Header extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <div
+            className="collapse navbar-collapse text-center"
+            id="navbarTogglerDemo01"
+          >
             <a className="navbar-brand" href="#">
               Urgency Detector
             </a>
