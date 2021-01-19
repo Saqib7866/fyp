@@ -26,7 +26,7 @@ def urgency(request):
 
         # Load the Features saved previously
         vectorizer_word_unigram = pickle.load(
-            open('C:/Users/Saqib Ali/vectorizer_word_unigram.pkl', 'rb'))
+            open('D:/FYP/saqib-fyp-app/fyp/fyp_app/urgency model/urgency_vectorizer_word_unigram.pkl', 'rb'))
 
         unseen_data = pd.DataFrame([(message)],columns=["tweets"])
         unseen_data = unseen_data["tweets"]
@@ -39,7 +39,7 @@ def urgency(request):
         unseen_data_features = pd.DataFrame(transform_unseen_data,
                                             columns=word_unigram_features)
         trained_model = pickle.load(
-            open('D:/FYP/NLP-Deployment-Heroku/rf_trained_model.pkl', 'rb'))
+            open('D:/FYP/saqib-fyp-app/fyp/fyp_app/urgency model/rf_urgency_trained_model.pkl','rb'))
         predicted_Label = trained_model.predict(unseen_data_features)
         
         Prediction = ""
@@ -78,9 +78,9 @@ def sentiment(request):
         # Predict the Label on Unseen Data
         predicted_Label = trained_model.predict(unseen_data_features)
         if predicted_Label == 1:
-            Prediction = "Positive"
+                Prediction = "Positive"
         else:
-            Prediction = "Negative"
+                Prediction = "Negative"
 
         result = {"message": message, "prediction": Prediction}
         return JsonResponse(result, status=status.HTTP_200_OK)
